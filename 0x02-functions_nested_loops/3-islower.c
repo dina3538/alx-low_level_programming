@@ -6,7 +6,7 @@
  *
  * Oc: check input of function
  *
- * Return: return 1 if `C` is lowercase
+ * Return: return 1 if 'C' is lowercase
  *		otherwise always 0 (success)
 */
 
