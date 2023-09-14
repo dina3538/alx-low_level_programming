@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * print_numbers - print 0-9
+ * print_number - print 0-9
  *		only using _putchar twise
  * Return: Always 0 (success)
 */
 
-void print_numbers(void)
+void print_number(void)
 {
 	int num = 0;
 
