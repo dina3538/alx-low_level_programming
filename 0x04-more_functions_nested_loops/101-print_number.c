@@ -1,19 +1,25 @@
 #include "main.h"
 
 /**
- * print_number - print 0-9
- *		only using _putchar twise
- * Return: Always 0 (success)
+ * print_number - print an integer
+ *
+ * @n: the integer to print
+ *
+ * Return: nothing!
 */
 
-void print_number(void)
+void print_number(int n)
 {
-	int num = 0;
+	unsigned int k = n;
 
-	do {
-		_putchar(num + 48);
-		num++;
-	} while (num >= 0 && num <= 9);
-	_putchar('\n');
-	return (0);
+	if (n < 0)
+	{
+		n += -1;
+		k = n;
+		_putchar('-');
+	}
+		k /= 10;
+		if (k != 0)
+			print_number(k);
+		_putchar((unsigned int) n % 10 + '0');
 }
