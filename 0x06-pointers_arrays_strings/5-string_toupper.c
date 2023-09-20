@@ -10,7 +10,7 @@
 
 char *string_toupper(char *str)
 {
-	int index;
+	char  index;
 
 	for (index = 0; str[index] != '\0'; index++)
 	{
