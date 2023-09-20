@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strncpy - function name
+ * _strncpy - the function name
  * @dest: parameter one
  * @src: parameter two
  * @n: parameter three
