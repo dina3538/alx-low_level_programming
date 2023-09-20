@@ -5,19 +5,19 @@
  * @a: The array of integers to be reversed.
  * @n: The numbers of element in the array.
  *
- * Return: nothing!
+ * Return: void
 */
 
 void reverse_array(int *a, int n)
 {
-	int i, j, t;
+	int i, j;
 
-	for (i = 0; j = (n - 1); i < j)
-	       	i++;
-		j--;;
+	for (i = 0; i < n / 2; i++)
 	{
-		t = a[i];
-		a[i] = a[j];
-		a[j] = t;
+
+		j = a[i];
+		a[i] = a[n - 1 - i];
+		a[n - 1 - i] = j;
 	}
+
 }
