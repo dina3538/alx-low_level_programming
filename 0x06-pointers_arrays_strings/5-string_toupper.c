@@ -3,14 +3,14 @@
 /**
  * *string_toupper - change all lowercase letters of
  * a string to uppercase letters.
- * @str: the string to return
+ * @str: pointer
  *
- * Return: string
+ * Return: str
 */
 
 char *string_toupper(char *str)
 {
-	char  index;
+	int index;
 
 	for (index = 0; str[index] != '\0'; index++)
 	{
