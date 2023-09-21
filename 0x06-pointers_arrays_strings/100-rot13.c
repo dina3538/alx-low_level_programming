@@ -11,16 +11,16 @@
 char *rot13(char *s)
 {
 	int i, j;
-	char *rot13 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char *ROT13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *rott13 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char *ROT13 = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
 	i = 0;
 	while (s[i] != '\0')
 	{
 		j = 0;
-		while (rot13[j] != '\0')
+		while (rott13[j] != '\0')
 		{
-			if (s[i] == rot13[j])
+			if (s[i] == rott13[j])
 			{
 				s[i] = ROT13[j];
 				break;
