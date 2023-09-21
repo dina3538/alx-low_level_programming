@@ -10,7 +10,7 @@
 
 void print_number(int n)
 {
-	unsigned int n;
+	unsigned int n1;
 
 	n1 = n;
 
@@ -25,6 +25,6 @@ void print_number(int n)
 		print_number(n1 / 10);
 	}
 	_putchar((n1 % 10) + '0');
-	return (0);
+
 }
 
