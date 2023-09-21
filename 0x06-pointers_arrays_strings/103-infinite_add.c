@@ -27,7 +27,7 @@ void rev_string(char *n)
 }
 
 /**
- * infinite_add - add 2 numbers together
+ * *infinite_add - add 2 numbers together
  * @n1: text representation of 1st number to add
  * @n2: text representation of 2nd number to add
  * @r: pointer to buffer
@@ -42,7 +42,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 	while (*(n1 + i) != '\0')
 		i++;
-	while (*(n2 + i) != '\0')
+	while (*(n2 + j) != '\0')
 		j++;
 	i--;
 	j--;
