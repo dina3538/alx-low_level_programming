@@ -18,7 +18,8 @@ void rev_string(char *n)
 	}
 	i--;
 
-	for (j = 0; j < i; j++; j--)
+	for (j = 0; j < i; j++)
+		i--;
 	{
 		temp = *(n + j);
 		*(n + j) = *(n + i);
@@ -37,7 +38,7 @@ void rev_string(char *n)
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int overflow = 0, i = 0, j = 0, digit = 0;
+	int overflow = 0, i = 0, j = 0, digits = 0;
 	int val1 = 0, val2 = 0, temp_tot = 0;
 
 	while (*(n1 + i) != '\0')
