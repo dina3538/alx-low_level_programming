@@ -1,37 +1,31 @@
 #include "main.h"
+#include<ctype.h>
 
 /**
- * *cap_string - captitalizes all words of a string.
- * @str: the string to be captitalized
+ * cap_string - capitalizes all words of a string
  *
- * Return: str
+ * @str: the string to be capitalized
+ *
+ * Return: A pointer to the changed string
 */
 
 char *cap_string(char *str)
 {
-	int index = 0;
+	int capitalize = 1; /*Flag to indicate whether to capitalize the next character*/
+	int i = 0;
 
-	while (str[index])
+	while (str[i] != '\0')
 	{
-		while (!(str[index] >= 'a' && str[index] <= 'z'))
-			index++;
-
-		if (str[index - 1] == ' ' ||
-			str[index - 1] == '\t' ||
-			str[index - 1] == '\n' ||
-			str[index - 1] == ',' ||
-			str[index - 1] == ';' ||
-			str[index - 1] == '.' ||
-			str[index - 1] == '!' ||
-			str[index - 1] == '?' ||
-			str[index - 1] == '"' ||
-			str[index - 1] == '(' ||
-			str[index - 1] == ')' ||
-			str[index - 1] == '{' ||
-			str[index - 1] == '}' ||
-			index == 0)
-				str[index] -= 32;
-		index++;
+		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == ',' || str[i] == ';' || str[i] == '.' || str[i] == '!' || str[i] == '?' || str[i] == '"' || str[i] == '(' || str[i] == ')' || str[i] == '{' || str[i] == '}')
+		{
+			capitalize = 1;
+		}
+		else if (capitalize)
+		{
+			str[i] = toupper(str[i]);
+			capitalize = 0;
+		}
+		i++;
 	}
 	return (str);
 }
