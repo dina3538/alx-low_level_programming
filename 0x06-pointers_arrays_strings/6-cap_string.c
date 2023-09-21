@@ -3,18 +3,16 @@
 
 /**
  * cap_string - capitalizes all words of a string
- *
  * @str: the string to be capitalized
  *
- * Return: A pointer to the changed string
+ * Return: pointer to the modified string
 */
 
 char *cap_string(char *str)
 {
 	int capitalize = 1; /*Flag to indicate whether to capitalize the next character*/
-	int i = 0;
 
-	while (str[i] != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == ',' || str[i] == ';' || str[i] == '.' || str[i] == '!' || str[i] == '?' || str[i] == '"' || str[i] == '(' || str[i] == ')' || str[i] == '{' || str[i] == '}')
 		{
@@ -25,7 +23,7 @@ char *cap_string(char *str)
 			str[i] = toupper(str[i]);
 			capitalize = 0;
 		}
-		i++;
+
 	}
 	return (str);
 }
