@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * rot13 - encode rot13
+ * *rot13 - encodes a string
  * @s: pointer to string parameters
  *
  * Return: *s
