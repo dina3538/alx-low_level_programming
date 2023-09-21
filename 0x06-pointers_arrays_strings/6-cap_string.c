@@ -4,7 +4,7 @@
  * *cap_string - captitalizes all words of a string.
  * @str: the string to be captitalized
  *
- * Return: A pointer to the changed string.
+ * Return: str
 */
 
 char *cap_string(char *str)
