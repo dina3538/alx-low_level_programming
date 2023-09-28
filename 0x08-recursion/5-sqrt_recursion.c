@@ -4,8 +4,8 @@ int square(int n, int v);
 /**
  * _sqrt_recursion - returns the natural square root
  * @n: int
- * @v: square root
- * Return: int
+ * @v: iterate number
+ * Return: the natural square root
 */
 
 int _sqrt_recursion(int n)
@@ -16,8 +16,9 @@ int _sqrt_recursion(int n)
 /**
  * square - find square root
  * @n: int
- * @v: square root
- * Return: int
+ * @v: iterate number
+ *
+ * Return: the natural square root
 */
 int square(int n, int v)
 {
