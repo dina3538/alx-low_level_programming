@@ -11,7 +11,7 @@ int square(int n, int v);
 int _sqrt_recursion(int n)
 {
 	return (square(n, 1));
-{
+}
 
 /**
  * square - find square root
@@ -21,12 +21,12 @@ int _sqrt_recursion(int n)
 */
 int square(int n, int v)
 {
-	int square = v * v;
+	int sqrt = v * v;
 
-	if (square == n)
+	if (sqrt == n)
 		return (v);
-	else if (square > n)
+	else if (sqrt > n)
 		return (-1);
 	else
-		return (square(n, v + 1))
+		return (square(n, v + 1));
 }
