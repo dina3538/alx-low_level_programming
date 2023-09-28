@@ -3,8 +3,8 @@
 int square(int n, int v);
 /**
  * _sqrt_recursion - returns the natural square root
- * @n: int
- * @v: iterate number
+ * @n: number to calculate the natursl square root
+ *
  * Return: the natural square root
 */
 
