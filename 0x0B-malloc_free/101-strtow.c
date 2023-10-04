@@ -26,7 +26,7 @@ int wnum(char *s)
 }
 
 /**
- * **strow - function that splits a string into words.
+ * **strtow - function that splits a string into words.
  * @str: string to splits
  * Return: ponter to array
 */
