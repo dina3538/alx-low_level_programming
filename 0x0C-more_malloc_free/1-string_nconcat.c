@@ -12,17 +12,19 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *a;
-	unsigned int i, j, s1l = 0, s2l = 0;
+	unsigned int i, j, s1l, s2l;
 
 	if (s1 == NULL)
 		s1 = " ";
 	if (s2 == NULL)
 		s2 = " ";
+	s1l = 0;
 	while (s1l != '\0')
 	{
 		;
 		s1l++;
 	}
+	s2l = 0;
 	while (s2l != '\0')
 	{
 		;
