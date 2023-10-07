@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 /**
- * string_nconcat - concatenates two string
+ * *string_nconcat - concatenates two string
  * @s1: pointer
  * @s2: pointer
  * @n: number of bytes for s2
@@ -18,18 +18,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s1 = " ";
 	if (s2 == NULL)
 		s2 = " ";
-	s1l = 0;
-	while (s1l != '\0')
-	{
+	for (s1l = 0; s1[s1l] != '\0'; s1l++)
 		;
-		s1l++;
-	}
-	s2l = 0;
-	while (s2l != '\0')
-	{
+	for (s2l = 0; s2[s2l] != '\0'; s2l++)
 		;
-		s2l++;
-	}
 
 	a = malloc(s1l + n + 1);
 	if (a == NULL)
