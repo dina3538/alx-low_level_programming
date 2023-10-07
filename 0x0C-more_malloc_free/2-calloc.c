@@ -11,14 +11,21 @@
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
+	int i = 0, j = 0;
 	char *dd;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	dd = malloc(sizeof(int) * nmemb);
+	j = nmemb * size;
+	dd = malloc(j);
+
 	if (dd == 0)
 		return (NULL);
-	memset(dd, 0, sizeof(int) * nmemb);
+	while (i < j)
+	{
+		dd[i] = 0;
+		i++;
+	}
 
 	return (dd);
 }
