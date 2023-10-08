@@ -25,7 +25,7 @@ void _puts(char *str)
 /**
  * print_int - print an integers
  * @n: int
- * Return: 0
+ * Return: void
 */
 
 void print_int(unsigned long int n)
