@@ -6,7 +6,6 @@
 void _puts(char *str);
 int _atoi(const char *a);
 void print_int(unsigned long int n);
-int main(int argc, char const *argv[]);
 int _putchar(char c);
 /**
  * _putchar - writes the character c to stdout
