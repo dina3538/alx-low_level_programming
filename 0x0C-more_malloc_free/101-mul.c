@@ -2,11 +2,13 @@
 #include<stdlib.h>
 
 void _puts(char *str);
+int _atoi(const char *a);
 void print_int(unsigned long int n);
+int main(int argc, char const *argv[]);
 
 /**
  * _puts - print a string
- * @str: pinter
+ * @str: pinter to the string to print
  * Return: void
 */
 
@@ -19,6 +21,31 @@ void _puts(char *str)
 		_putchar(str[i]);
 		i++;
 	}
+}
+/**
+ * _atoi - convert string to integer
+ * @a: char type string
+ * Return: int converted
+*/
+
+int _atoi(const char *a)
+{
+	int si = 1;
+	unsigned long int r = 0, f1, i;
+
+	for (f1 = 0; !(a[f1] >= 48 && a[f1] <= 57); f1++)
+	{
+		if (a[f1] == '-')
+		{
+			si *= -1;
+		}
+	}
+	for (i = f1; a[i] >= 48 && a[i] <= 57; i++)
+	{
+		r *= 10;
+		r += (a[i] - 48);
+	}
+	return (si * r);
 }
 
 /**
@@ -56,7 +83,7 @@ int main(int argc, char const *argv[])
 		_puts("Error ");
 		exit(98);
 	}
-	print_int(atoi(argv[1]) * atoi(argv[2]));
+	print_int(_atoi(argv[1]) * _atoi(argv[2]));
 	_putchar('\n');
 
 	return (0);
