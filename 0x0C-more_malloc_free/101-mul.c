@@ -3,7 +3,6 @@
 
 void _puts(char *str);
 void print_int(unsigned long int n);
-int main(int argc, char const *argv[]);
 
 /**
  * _puts - print a string
