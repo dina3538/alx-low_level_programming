@@ -7,35 +7,35 @@
  * @name: name of dog
  * @owner: dog owner
  * @age: dog age
- * Return: struct pointer dog
+ * Return: dogy
  * NULL if function fail
 */
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *dog;
+	dog_t *dogy;
 
 	if (!name || age < 0 || !owner)
 		return (NULL);
 
-	dog = (dog_t *)malloc(sizeof(dog_t));
-	if (dog == NULL)
+	dogy = (dog_t *)malloc(sizeof(dog_t));
+	if (dogy == NULL)
 		return (NULL);
-	dog->name = malloc(sizeof(char) * (strlen(name) + 1));
-	if (dog->name == NULL)
+	dogy->name = malloc(sizeof(char) * (strlen(name) + 1));
+	if (dogy->name == NULL)
 	{
-		free(dog);
+		free(dogy);
 		return (NULL);
 	}
-	dog->owner = malloc(sizeof(char) * (strlen(owner) + 1));
-	if ((*dog).owner == NULL)
+	dogy->owner = malloc(sizeof(char) * (strlen(owner) + 1));
+	if ((*dogy).owner == NULL)
 	{
-		free(dog->name);
-		free(dog);
+		free(dogy->name);
+		free(dogy);
 		return (NULL);
 	}
-	dog->name = strcpy(dog->name, name);
-	dog->age = age;
-	dog->owner = strcpy(dog->owner, owner);
-	return (dog);
+	dogy->name = strcpy(dogy->name, name);
+	dogy->age = age;
+	dogy->owner = strcpy(dogy->owner, owner);
+	return (dogy);
 }
