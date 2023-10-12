@@ -78,5 +78,5 @@ void print_all(const char * const format, ...)
 		i++;
 	}
 	printf("\n");
-	v_end(args);
+	va_end(args);
 }
