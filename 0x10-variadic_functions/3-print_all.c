@@ -73,9 +73,10 @@ void print_all(const char * const format, ...)
 				print[k].f(separator, args);
 				separator = ", ";
 			}
-			i++;
+			k++;
 		}
-		printf("\n");
-		va_end(args);
+		i++;
 	}
+	printf("\n");
+	v_end(args);
 }
