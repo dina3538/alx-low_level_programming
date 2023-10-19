@@ -2,8 +2,8 @@ section		.text
 	extern	printf
 	global	main
 main:
-	mov		edi, requ
-	mov		eax, 0
+	mov		ddi, requ
+	mov		exit, 0
 	call	printf
 
 section		.data
