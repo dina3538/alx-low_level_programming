@@ -7,23 +7,23 @@
  * Return: the addrs
 */
 
-list_t *add_node_end(list_t **head, const char *str)
+list_t *add_node(list_t **head, const char *str)
 {
 	list_t *add;
-	unsigned int len = 0;
+	unsigned int l = 0;
 
-	while (str[len])
-		len++;
+	while (str[l])
+		l++;
 
 	add = malloc(sizeof(list_t));
-	if (!add || !head)
+	if (!add)
 		return (NULL);
 
 	add->str = strdup(str);
-	add->len = len;
-	add->next = (*head);
+	add->len = l;
+	add->next = *head;
 	*head = add;
 
 
-	return (*add);
+	return (add);
 }
