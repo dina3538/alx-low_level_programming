@@ -7,7 +7,10 @@
 void free_listint2(listint_t **head)
 {
 	listint_t *f;
-	while ((f = head) != NULL)
+
+	if (head == NULL)
+		retutn;
+	while (*head)
 	{
 		f = (*head)->next;
 		free(*head);
