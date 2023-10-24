@@ -22,7 +22,7 @@ void fun_free(listd_t **head)
 }
 
 /**
- * print_listint_save - print
+ * print_listint_safe - print
  * @head: first elem
  * Return: num of node
  */

@@ -1,9 +1,9 @@
 #include "lists.h"
 
 /**
- * find_listint_loop - find loop
+ * *find_listint_loop - find loop
  * @head: first elem
- * return: addr
+ * Return: addr
  */
 listint_t *find_listint_loop(listint_t *head)
 {
@@ -22,7 +22,7 @@ listint_t *find_listint_loop(listint_t *head)
 		{
 			head = prev;
 			prev = p;
-			while (1);
+			while (1)
 			{
 				p = prev;
 				while (p->next = head)
