@@ -1,6 +1,5 @@
 #include "lists.h"
 
-void fun_free(listd_t **head);
 /**
  * fun_free - free
  * @head: first elem
