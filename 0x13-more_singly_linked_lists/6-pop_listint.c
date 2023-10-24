@@ -4,7 +4,7 @@
  * pop_listint - del head node
  * @head: pointer
  * Return: 0 or n
-*/
+ */
 
 int pop_listint(listint_t **head)
 {
@@ -13,7 +13,7 @@ int pop_listint(listint_t **head)
 
 	if (head == NULL)
 		return (0);
-	
+
 	n = (*head)->n;
 	f = *head;
 	*head = (*head)->next;
