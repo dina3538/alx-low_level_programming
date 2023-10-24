@@ -31,7 +31,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		if (f->next == NULL)
 			node = f->next;
 		else
-			node = f->next;
+			node = f->next->next;
 		free(f->next);
 		f->next = node;
 	}
