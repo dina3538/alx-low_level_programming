@@ -11,31 +11,16 @@ listint_t *find_listint_loop(listint_t *head)
 	listint_t *pr;
 	listint_t *prev;
 
-	pr = head;
-	prev = head;
-
-	while (head && pr && pr->next)
+	if (head == NULL)
+		return (NULL);
+	for (prev = head->next; prev != NULL; prev = prev->next)
 	{
-		head = head->next;
-		pr = pr->next->next;
-
-		if (head == pr)
-		{
-			head = prev;
-			prev = pr;
-			while (1)
-			{
-				pr = prev;
-				while (pr->next != head && pr->next != prev)
-				{
-					pr = pr->next;
-				}
-				if (pr->next = head)
-					break;
-				head = head->next;
-			}
-			return (pr->next);
-		}
+		if (prev == prev->next)
+			return (prev);
+		for (pr = head; pr != prev; pr = pr->next)
+			if (pr == prev->next)
+				return (prev->next);
 	}
 	return (NULL);
 }
+
