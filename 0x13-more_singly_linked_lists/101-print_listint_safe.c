@@ -41,6 +41,7 @@ size_t print_listint_safe(const listint_t *head)
 		nl->ptr = (void *)head;
 		nl->next = p;
 		p = nl;
+		add = p;
 
 		while (add->next != NULL)
 		{
