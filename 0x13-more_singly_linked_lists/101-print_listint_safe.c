@@ -23,7 +23,7 @@ const listint_t fun_free(const listint_t **d, size_t size, const listint_t *new)
 	f[l] = new;
 	free[d];
 	return (f);
-			
+
 }
 
 /**
@@ -34,36 +34,27 @@ const listint_t fun_free(const listint_t **d, size_t size, const listint_t *new)
 
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t node = 0;
-	listd_t *p, *nl, *add;
+	size_t l, node = 0;
+	const listint_t **d = NULL;
 
-	p = NULL;
 	while (head != NULL)
 	{
-		nl = malloc(sizeof(listd_t));
-		if (nl = NULL)
-			exit(98);
-		nl->ptr = (void *)head;
-		nl->next = p;
-		p = nl;
-		add = p;
-
-		while (add->next != NULL)
+		for (l = 0; l < node; l++)
 		{
-			add = add->next;
-			if (head == add->ptr)
+			if (head == d[l])
 			{
 				printf("->[%p] %d\n", (void *)head, head->n);
-				fun_free(&p);
+				free(d);
 				return (node);
 			}
 		}
+		node++;
+		d = fun_free(d, node, head);
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
-		node++;
 
 	}
-	fun_free(&p);
+	fun_free(d);
 	return (node);
 }
 
