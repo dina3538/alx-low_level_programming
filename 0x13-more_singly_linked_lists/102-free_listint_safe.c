@@ -1,4 +1,6 @@
 #include "lists.h"
+listint_t *fun_l(listint_t *head);
+
 /**
  * fun_l - fun
  * @head: firs el
