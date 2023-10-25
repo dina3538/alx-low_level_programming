@@ -1,5 +1,4 @@
 #include "lists.h"
-
 /**
  * fun_free - free
  * @d: first elem
@@ -7,7 +6,7 @@
  * @new: new node
  * Return: f
  */
-const listint_t fun_free(const listint_t **d, size_t size, const listint_t *new)
+const listint_t **fun_free(const listint_t **d, size_t size, const listint_t *new)
 {
 	const listint_t **f;
 	size_t l;
@@ -21,7 +20,7 @@ const listint_t fun_free(const listint_t **d, size_t size, const listint_t *new)
 	for (l = 0; l < size - 1; l++)
 		f[l] = d[l];
 	f[l] = new;
-	free[d];
+	free(d);
 	return (f);
 
 }
@@ -54,7 +53,7 @@ size_t print_listint_safe(const listint_t *head)
 		head = head->next;
 
 	}
-	fun_free(d);
+	free(d);
 	return (node);
 }
 
