@@ -7,7 +7,8 @@
  * @new: new node
  * Return: f
  */
-const listint_t **fun_free(const listint_t **d, size_t size, const listint_t *new)
+const listint_t **fun_free(const listint_t **d,
+		size_t size, const listint_t *new)
 {
 	const listint_t **f;
 	size_t l;
