@@ -1,4 +1,7 @@
 #include "lists.h"
+
+const listint_t **fun_free(const listint_t **d, size_t size, const listint_t *ne
+w);
 /**
  * fun_free - free
  * @d: first elem
