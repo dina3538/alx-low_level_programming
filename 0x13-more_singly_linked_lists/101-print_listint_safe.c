@@ -1,7 +1,5 @@
 #include "lists.h"
 
-const listint_t **fun_free(const listint_t **d, size_t size, const listint_t *ne
-w);
 /**
  * fun_free - free
  * @d: first elem
@@ -14,7 +12,7 @@ const listint_t **fun_free(const listint_t **d, size_t size, const listint_t *ne
 	const listint_t **f;
 	size_t l;
 
-	f == malloc(size * sizeof(listint_t *));
+	f = malloc(size * sizeof(listint_t *));
 	if (f == NULL)
 	{
 		free(d);
