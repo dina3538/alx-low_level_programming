@@ -2,12 +2,12 @@
 
 /**
  * fun_free - free
- * @d: first elem
+ * @dl: first elem
  * @size: size
  * @new: new node
  * Return: f
  */
-const listint_t **fun_free(const listint_t **d,
+const listint_t **fun_free(const listint_t **dl,
 		size_t size, const listint_t *new)
 {
 	const listint_t **f;
@@ -16,13 +16,13 @@ const listint_t **fun_free(const listint_t **d,
 	f = malloc(size * sizeof(listint_t *));
 	if (f == NULL)
 	{
-		free(d);
+		free(dl);
 		exit(98);
 	}
 	for (l = 0; l < size - 1; l++)
-		f[l] = d[l];
+		f[l] = dl[l];
 	f[l] = new;
-	free(d);
+	free(dl);
 	return (f);
 
 }
@@ -35,12 +35,12 @@ const listint_t **fun_free(const listint_t **d,
 
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t l, node = 0;
+	size_t ll, node = 0;
 	const listint_t **d = NULL;
 
 	while (head != NULL)
 	{
-		for (l = 0; l < node; l++)
+		for (ll = 0; ll < node; ll++)
 		{
 			if (head == d[l])
 			{
