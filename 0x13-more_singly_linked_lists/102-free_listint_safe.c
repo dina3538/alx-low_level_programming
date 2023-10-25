@@ -38,7 +38,7 @@ size_t free_listint_safe(listint_t **h)
 	if (h == NULL || *h == NULL)
 		return (0);
 	lo = fun_l(*h);
-	for (length = 0; (*h != lo || loop ) && *h != NULL; *h = next)
+	for (length = 0; (*h != lo || loop) && *h != NULL; *h = next)
 	{
 		length++;
 		next = (*h)->next;
