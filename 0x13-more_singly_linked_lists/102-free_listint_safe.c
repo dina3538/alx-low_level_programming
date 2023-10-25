@@ -1,5 +1,4 @@
 #include "lists.h"
-lisint_t *fun_l(listint_t *head);
 /**
  * fun_l - fun
  * @head: firs el
@@ -7,7 +6,7 @@ lisint_t *fun_l(listint_t *head);
  * Return: addr
  */
 
-lisint_t *fun_l(listint_t *head)
+listint_t *fun_l(listint_t *head)
 {
 	listint_t *p, *en;
 
@@ -18,7 +17,7 @@ lisint_t *fun_l(listint_t *head)
 		if (en == en->next)
 			return (en);
 		for (p = head; p != en; p = p->next)
-			if (p == end->next)
+			if (p == en->next)
 				return (en->next);
 	}
 	return (NULL);
@@ -58,7 +57,7 @@ size_t free_listint_safe(listint_t **h)
 		free(*h);
 	}
 	*h = NULL;
-	returm (length);
+	return (length);
 }
 
 
