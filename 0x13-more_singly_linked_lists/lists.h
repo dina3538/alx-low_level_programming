@@ -18,18 +18,7 @@ typedef struct listint_s
 	int n;
 	struct listint_s *next;
 } listint_t;
-/**
- * struct listd_s - ffg
- * @ptr: poin
- *@next: next elem
- */
 
-typedef struct listd_s
-{
-	void *ptr;
-	struct listd_s *next;
-} listd_t;
-void fun_free(listd_t **head);
 size_t print_listint(const listint_t *h);
 size_t listint_len(const listint_t *h);
 listint_t *add_nodeint(listint_t **head, const int n);

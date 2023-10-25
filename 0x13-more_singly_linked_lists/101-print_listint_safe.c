@@ -2,23 +2,28 @@
 
 /**
  * fun_free - free
- * @head: first elem
+ * @d: first elem
+ * @size: size
+ * @new: new node
+ * Return: f
  */
-void fun_free(listd_t **head)
+const listint_t fun_free(const listint_t **d, size_t size, const listint_t *new)
 {
-	listd_t *f;
-	listd_t *current;
+	const listint_t **f;
+	size_t l;
 
-	if (head != NULL)
+	f == malloc(size * sizeof(listint_t *));
+	if (f == NULL)
 	{
-		current = *head;
-		while ((f = current) != NULL)
-		{
-			current = current->next;
-			free(f);
-		}
-		*head = NULL;
+		free(d);
+		exit(98);
 	}
+	for (l = 0; l < size - 1; l++)
+		f[l] = d[l];
+	f[l] = new;
+	free[d];
+	return (f);
+			
 }
 
 /**
