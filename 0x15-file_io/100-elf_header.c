@@ -253,27 +253,24 @@ int main(int argc, char **argv)
 	ssize_t byte;
 
 	if (argc != 2)
-		dprintf(STDERR_FILENO, "elf_header elf_filename\n"), exit(98);
+		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n"), exit(98);
 
 	f = open(argv[1], O_RDONLY);
 	if (f == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-		exit(98);
-	}
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]), exit(98);
+
 	byte = read(f, &head, sizeof(head));
 	if (byte < 1 || byte != sizeof(head))
 
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]), exit(98);
 	if (head.e_ident[0] == 0x7E && head.e_ident[1] == 'E' && head.e_ident[2] ==
 			'L' && head.e_ident[3] == 'F')
 	{
 		printf("ELF Header: \n");
 	}
 	else
-		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]), exit(98);
+
 
 	p_magic(head);
 	p_class(head);
