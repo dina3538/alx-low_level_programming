@@ -21,10 +21,10 @@ int create_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 		b = write(dn, text_content, strlen(text_content));
 
+	close(dn);
 	if (b == -1)
-	{
-		close(dn);
 		return (-1);
-	}
+	else
+		return (1);
 }
 
