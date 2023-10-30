@@ -231,7 +231,7 @@ void p_magic(Elf64_Ehdr head)
 
 	for (r = 0; r < EI_NIDENT; r++)
 	{
-		printf("%2.2x%s", head.e_ident[r]);
+		printf("%02x", head.e_ident[r]);
 
 		if (r == EI_NIDENT - 1)
 			printf("\n");
