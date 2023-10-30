@@ -257,13 +257,13 @@ int main(int argc, char **argv)
 
 	f = open(argv[1], O_RDONLY);
 	if (f == -1)
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]), exit(98);
+		dprintf(STDERR_FILENO, "Can't open file: %s\n", argv[1]), exit(98);
 
 	byte = read(f, &head, sizeof(head));
 	if (byte < 1 || byte != sizeof(head))
 
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]), exit(98);
-	if (head.e_ident[0] == 0x7E && head.e_ident[1] == 'E' && head.e_ident[2] ==
+		dprintf(STDERR_FILENO, "Can't read file: %s\n", argv[1]), exit(98);
+	if (head.e_ident[0] == 0x7f && head.e_ident[1] == 'E' && head.e_ident[2] ==
 			'L' && head.e_ident[3] == 'F')
 	{
 		printf("ELF Header: \n");
