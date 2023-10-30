@@ -2,9 +2,7 @@
 #include<stdio.h>
 #include<elf.h>
 
-void p_class(Elf64_Ehdr head);
-void p_entry(Elf64_Ehdr head);
-void p_abi(Elf64_Ehdr head);
+void p_again_osa(Elf64_Ehdr head);
 
 /**
  * p_entry - print elf en
