@@ -1,63 +1,59 @@
 #include "main.h"
 #include<stdio.h>
 #include<elf.h>
-void p_class(unsigned char *e_ident);
-void close_elf(int elf);
-void p_entry(unsigned long int e_entry, unsigned char *e_ident);
-void p_abi(unsigned char *e_ident);
 
-
-/**
- * close_elf - close
- * @elf: elf
- */
-void close_elf(int elf)
-{
-	if (close(elf) == -1)
-	{
-		dprintf(STDERR_FILENO,
-			"Error: Can't close fd %d\n", elf);
-		exit(98);
-	}
-}
+void p_class(Elf64_Ehdr head);
+void p_entry(Elf64_Ehdr head);
+void p_abi(Elf64_Ehdr head);
 
 /**
  * p_entry - print elf en
- * @e_entry: entry
- * @e_ident: ident
+ * @head: head
  */
-void p_entry(unsigned long int e_entry, unsigned char *e_ident)
+void p_entry(Elf64_Ehdr head)
 {
-	printf("  Entry point address:               ");
+	int m = 0, l = 0;
+	unsigned char *d = (unsigned char *)&head.e_entry;
 
-	if (e_ident[EI_DATA] == ELFDATA2MSB)
+	printf("  Entry point address:               0x");
+	if (head.e_ident[EI_DATA] != ELFDATA2MSB)
 	{
-		e_entry = ((e_entry << 8) & 0xFF00FF00) |
-			  ((e_entry >> 8) & 0xFF00FF);
-		e_entry = (e_entry << 16) | (e_entry >> 16);
+		m = head.e_ident[EI_DATA] == ELFCLASS64 ? 7 : 3;
+		while (!d[m])
+			m--;
+		printf("%x", d[m--]);
+		for (; m >= 0; m--)
+			printf("%02x", d[m]);
+		printf("\n");
+	}
+	else
+	{
+		m = 0;
+		l = head.e_ident[EI_CLASS] == ELFCLASS64 ? 7 : 3;
+		while (!d[m])
+			m++;
+		printf("%x", d[m++]);
+		for (; m <= l; m++)
+			printf("%02x", d[m]);
+		printf("\n");
 	}
 
-
-	if (e_ident[EI_CLASS] == ELFCLASS32)
-		printf("%#x\n", (unsigned int)e_entry);
-
-	else
-		printf("%#lx\n", e_entry);
 }
 
 /**
  * p_type - tpe of elf
- * @e_type: e type
- * @e_ident: ident
+ * @head: header
  */
-void p_type(unsigned int e_type, unsigned char *e_ident)
+void p_type(Elf64_Ehdr head)
 {
-	if (e_ident[EI_DATA] == ELFDATA2MSB)
-		e_type >>= 8;
+	char *d = (char *)&head.e_type;
+	int m = 0;
 
 	printf("  Type:                              ");
+	if (head.e_ident[EI_DATA] == ELFDATA2MSB)
+		m = 1;
 
-	switch (e_type)
+	switch (d[m])
 	{
 	case ET_NONE:
 		printf("NONE (None)\n");
@@ -75,31 +71,33 @@ void p_type(unsigned int e_type, unsigned char *e_ident)
 		printf("CORE (Core file)\n");
 		break;
 	default:
-		printf("<unknown: %x>\n", e_type);
+		printf("<unknown: %x>\n", d[m]);
+		break;
 	}
+	printf("\n");
 }
 
 
 /**
  * p_abi - elf abi
- * @e_ident: head str
+ * @head: head str
  */
-void p_abi(unsigned char *e_ident)
+void p_abi(Elf64_Ehdr head)
 {
 	printf("  ABI Version:                       %d\n",
-	       e_ident[EI_ABIVERSION]);
+	       head.e_ident[EI_ABIVERSION]);
 }
 
 
 /**
  * p_osabi - print elf os
- * @e_ident: ident
+ * @head: ident
  */
-void p_osabi(unsigned char *e_ident)
+void p_osabi(Elf64_Ehdr head)
 {
 	printf("  OS/ABI:                            ");
 
-	switch (e_ident[EI_OSABI])
+	switch (head.e_ident[EI_OSABI])
 	{
 	case ELFOSABI_NONE:
 		printf("UNIX - System V\n");
@@ -131,41 +129,61 @@ void p_osabi(unsigned char *e_ident)
 	case ELFOSABI_STANDALONE:
 		printf("Standalone App\n");
 		break;
-	default:
-		printf("<unknown: %x>\n", e_ident[EI_OSABI]);
+	}
+	printf("\n");
+}
+/**
+ * p_again_osa - print osabi
+ * @head: header
+ */
+void p_again_osa(Elf64_Ehdr head)
+{
+	switch (head.e_ident[EI_OSABI])
+	{
+		case ELFOSABI_MODESTO:
+			printf("movell - Modesto");
+			break;
+		case ELFOSABI_OPENBSD:
+			printf("UNIX - OpenBSD");
+			break;
+		default:
+			printf("<unknown: %x>\n", head.e_ident[EI_OSABI]);
+			break;
 	}
 }
 
 /**
  * p_version -  print elf versi
- * @e_ident: pointer
+ * @head: pointer
  */
-void p_version(unsigned char *e_ident)
+void p_version(Elf64_Ehdr head)
 {
 	printf("  Version:                           %d",
-	       e_ident[EI_VERSION]);
+	       head.e_ident[EI_VERSION]);
 
-	switch (e_ident[EI_VERSION])
+	switch (head.e_ident[EI_VERSION])
 	{
 	case EV_CURRENT:
 		printf(" (current)\n");
 		break;
-	default:
-		printf("\n");
+	case EV_NONE:
+		printf("%s", "");
+		break;
 		break;
 	}
+	printf("\n");
 }
 
 
 /**
  * p_data - pri elf data
- * @e_ident: poin to arrr
+ * @head: poin to arrr
  */
-void p_data(unsigned char *e_ident)
+void p_data(Elf64_Ehdr head)
 {
 	printf("  Data:                              ");
 
-	switch (e_ident[EI_DATA])
+	switch (head.e_ident[EI_DATA])
 	{
 	case ELFDATANONE:
 		printf("none\n");
@@ -182,13 +200,13 @@ void p_data(unsigned char *e_ident)
 
 /**
  * p_class -  prin ele clss
- * @e_ident: point to arr
+ * @head: point to arr
  */
-void p_class(unsigned char *e_ident)
+void p_class(Elf64_Ehdr head)
 {
 	printf("  Class:                             ");
 
-	switch (e_ident[EI_CLASS])
+	switch (head.e_ident[EI_CLASS])
 	{
 	case ELFCLASSNONE:
 		printf("none\n");
@@ -205,19 +223,19 @@ void p_class(unsigned char *e_ident)
 
 /**
  * p_magic - print elef magic
- * @e_ident: point to arr
+ * @head: point to arr
  */
-void p_magic(unsigned char *e_ident)
+void p_magic(Elf64_Ehdr head)
 {
-	int s;
+	int r;
 
 	printf("  Magic:   ");
 
-	for (s = 0; s < EI_NIDENT; s++)
+	for (r = 0; r < EI_NIDENT; r++)
 	{
-		printf("%02x", e_ident[s]);
+		printf("%2.2x", head.e_ident[r]);
 
-		if (s == EI_NIDENT - 1)
+		if (r == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
@@ -230,43 +248,44 @@ void p_magic(unsigned char *e_ident)
  * @argv: vector
  * Return: 0
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
+int main(int argc, char **argv)
 {
-	Elf64_Ehdr *head;
-	int fd, x;
+	Elf64_Ehdr head;
+	int f;
+	ssize_t byte;
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	if (argc != 2)
+		dprintf(STDERR_FILENO, "elf_header elf_filename\n"), exit(98);
+
+	f = open(argv[1], O_RDONLY);
+	if (f == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(98);
 	}
-	head = malloc(sizeof(Elf64_Ehdr));
-	if (head == NULL)
-	{
-		close_elf(fd);
+	byte = read(f, &head, sizeof(head));
+	if (byte < 1 || byte != sizeof(head))
+
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
-	}
-	x = read(fd, head, sizeof(Elf64_Ehdr));
-	if (x == -1)
+	if (head.e_ident[0] == 0x7E && head.e_ident[1] == 'E' && head.e_ident[2] ==
+			'L' && head.e_ident[3] == 'F')
 	{
-		free(head);
-		close_elf(fd);
+		printf("ELF Header: \n");
+	}
+	else
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
-	}
-	check_elf(head->e_ident);
-	printf("ELF Header:\n");
-	p_magic(head->e_ident);
-	p_class(head->e_ident);
-	p_data(head->e_ident);
-	p_version(head->e_ident);
-	p_osabi(head->e_ident);
-	p_abi(head->e_ident);
-	p_type(head->e_type, head->e_ident);
-	p_entry(head->e_entry, head->e_ident);
-	free(head);
-	close_elf(fd);
-	return (0);
+
+	p_magic(head);
+	p_class(head);
+	p_data(head);
+	p_version(head);
+	p_osabi(head);
+	p_abi(head);
+	p_type(head);
+	p_entry(head);
+	if (close(f))
+		dprintf(STDERR_FILENO, "error in close : %d\n", f), exit(98);
+	return (EXIT_SUCCESS);
 }
