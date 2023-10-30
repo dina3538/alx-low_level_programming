@@ -1,4 +1,6 @@
 #include "main.h"
+#include<stdio.h>
+
 #define USAGE "Usage: cp file_from file_to\n"
 #define ER_NREAD "Error: Can't read from file %s\n"
 #define ER_NWRITE "Error: Can't write to %s\n"
