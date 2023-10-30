@@ -230,14 +230,7 @@ void p_magic(Elf64_Ehdr head)
 	printf("  Magic:   ");
 
 	for (r = 0; r < EI_NIDENT; r++)
-	{
-		printf("%02x", head.e_ident[r]);
-
-		if (r == EI_NIDENT - 1)
-			printf("\n");
-		else
-			printf(" ");
-	}
+		printf("%2.2x%s", head.e_ident[r], r == EI_NIDENT - 1 ? "\n" : " ");
 }
 
 /**
