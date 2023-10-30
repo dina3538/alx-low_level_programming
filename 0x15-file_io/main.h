@@ -18,7 +18,4 @@ void check_elf(unsigned char *e_ident);
 
 
 
-
-
-
 #endif
