@@ -16,7 +16,7 @@ void p_entry(Elf64_Ehdr head)
 	printf("  Entry point address:               0x");
 	if (head.e_ident[EI_DATA] != ELFDATA2MSB)
 	{
-		m = head.e_ident[EI_DATA] == ELFCLASS64 ? 7 : 3;
+		m = head.e_ident[EI_CLASS] == ELFCLASS64 ? 7 : 3;
 		while (!d[m])
 			m--;
 		printf("%x", d[m--]);
