@@ -201,7 +201,7 @@ void p_abi(unsigned char *e_ident)
 /**
  * p_type - Prints the type
  * @e_type: The ELF type.
- * @e_ident: A pointer to an array 
+ * @e_ident: A pointer to an array
  */
 
 
