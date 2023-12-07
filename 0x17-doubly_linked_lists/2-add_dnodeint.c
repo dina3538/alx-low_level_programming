@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * add_dnodeint - add node 
+ * add_dnodeint - add node
  * @head: the head
  * @n: size
  * Return: the addrss
